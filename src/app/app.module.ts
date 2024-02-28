@@ -11,13 +11,15 @@ import { ChatHomeComponent } from './chat-home/chat-home.component';
 import { HubConnection } from '@microsoft/signalr';
 import { MatSnackBarModule,MatSnackBarHorizontalPosition,MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FfComponent } from './ff/ff.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
     SigninComponent,
-    ChatHomeComponent
+    ChatHomeComponent,
+    FfComponent
   ],
   imports: [
     BrowserModule,
