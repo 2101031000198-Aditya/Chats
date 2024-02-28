@@ -1,0 +1,242 @@
+/* Variables for colors */
+$primary-color: #9c27b0; 
+$secondary-color: #ff9800; 
+$peach-light: #ffdab9; // Light Peach
+$peach-dark: #ff9966;
+
+$background-color:linear-gradient(to right, $peach-light, $peach-dark);
+$chat-background: #fafafa; 
+$message-received-color: #bdbdbd; 
+
+
+/* Main container */
+.chat-home-container {
+  display: flex;
+  height: 100vh;
+  // background-color:black;
+}
+
+/* Available persons section */
+.available-persons {
+  width: 27%;
+  background: #FF416C;
+  background: -webkit-linear-gradient(to right, #f59a8a, #f99db2);
+  background: linear-gradient(to right,  #f59a8a, #f99db2);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+
+  /* Person profile */
+  .person-profile {
+    display: flex;
+    align-items: center;
+    // justify-content: space-between;
+    padding: 10px;
+    cursor: pointer;
+    
+    
+
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    span {
+      font-size: 16px;
+      color: #333;
+    }
+
+    &:hover {
+      background-color: #e0e0e0; // Light gray
+    }
+  }
+}
+.fl{
+  display: flex;
+  border-bottom: 1px solid #bcadad;
+  padding-bottom: 10px;
+}
+
+.person-profiles img {
+  width: 60px;
+  height: 60px;
+  box-shadow: 0px 1px 3px 2px black;
+  border-radius: 50%;
+  margin-right: 10px; 
+}
+
+
+/* Chat box container */
+.chat-box-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+
+}
+
+/* Chat box section */
+.chat-box {
+    flex-grow: 1;
+    background-image: url('https://t3.ftcdn.net/jpg/03/27/51/56/360_F_327515607_Hcps04aaEc7Ki43d1XZPxwcv0ZaIaorh.jpg');
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: relative;
+  
+    .chat-header {
+      display: flex;
+      align-items: center;
+      // justify-content: space-between; /* Align items horizontally */
+      padding: 10px 20px; 
+      background-color: #e0e0e0; 
+      border-radius: 8px 8px 0 0; 
+      margin-bottom: 10px;
+  
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+  
+      .user-name {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+        
+      }
+    }
+  
+
+  /* Messages */
+  .message {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 25%;
+    word-wrap: break-word;
+    transition: background-color 0.3s ease;
+
+    /* Received messages */
+    &.received {
+      background-color: $message-received-color;
+      align-self: flex-start;
+      margin-right: auto;
+
+      &:hover {
+        background-color: darken($message-received-color, 10%);
+      }
+    }
+
+    /* Sent messages */
+    &.sent {
+      background-color: $secondary-color;
+      color: #fff;
+      align-self: flex-end;
+      margin-left: auto;
+
+      &:hover {
+        background-color: darken($secondary-color, 10%);
+      }
+    }
+
+    /* Message content */
+    .message-content {
+      font-size: 16px;
+    }
+  }
+}
+
+/* Message input section */
+.message-input {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: calc(100% - 40px);
+  display: flex;
+  align-items: center;
+
+  input[type="text"] {
+    flex-grow: 1;
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+
+  button {
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: $primary-color;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
+
+/* Keyframe animation for fade in effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Apply the fade in animation to the messages */
+.message {
+  animation: fadeIn 0.5s ease;
+}
+
+.my-profile {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #ccc; 
+}
+
+.my-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.my-profile span {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Available persons section */
+// .available-persons {
+//   width: 30%;
+//   background-color: $background-color;
+//   padding: 20px;
+//   box-sizing: border-box;
+//   overflow-y: auto;
+//   border-bottom: 1px solid #ccc; /* Add a border at the bottom of available persons */
+// }
+// Search bar css
+.search-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.search-input {
+  padding: 8px 15px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  // width: 300px;
+  // max-width: 80%;
+  font-size: 16px;
+  box-sizing: border-box;
+}

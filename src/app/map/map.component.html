@@ -1,0 +1,50 @@
+<!-- <div class="map-container">
+  <div class="search-container">
+    <input type="text" class="search-input" placeholder="Search for a place" [(ngModel)]="searchQuery1" (input)="searchPlace1()">
+  </div>
+
+  <div *ngIf="searchResults1.length > 0" class="search-results">
+    <ul>
+      <li *ngFor="let result of searchResults1" (click)="selectPlace1(result)" class="place-item">
+        {{ result.display_name }}
+        
+      </li>
+    </ul>
+  </div>
+  <button class="select-coordinates-button" (click)="storeCoordinates1()">Select Coordinates</button>
+</div> -->
+
+<!-- <div class="map-container">
+  <div class="search-container">
+    <input type="text" class="search-input" placeholder="Search for a place" [(ngModel)]="searchQuery2" (input)="searchPlace2()">
+  </div>
+
+  <div *ngIf="searchResults2.length > 0" class="search-results">
+    <ul>
+      <li *ngFor="let result of searchResults2" (click)="selectPlace2(result)" class="place-item">
+        {{ result.display_name }}
+      </li>
+    </ul>
+  </div>
+  <button class="select-coordinates-button" (click)="storeCoordinates2()">Select Coordinates</button>
+
+  <div class="distance-container" *ngIf="distance > 0">
+    <p class="distance-text">Distance between the two locations: {{ distance.toFixed(2) }} kilometers</p>
+  </div>
+
+</div> -->
+
+<div class="map-container">
+  <div class="search-container">
+    <input type="text" class="search-input" placeholder="Search for a place" [(ngModel)]="searchQuery1" (input)="searchPlace1()">
+    <!-- <button class="live-location-button" (click)="getLiveLocation()">Get Live Location</button> -->
+  </div>
+
+  <div *ngIf="searchResults1.length > 0" class="search-results">
+    <ul>
+      <li *ngFor="let result of searchResults1" (click)="selectPlace1(result)" class="place-item">
+        {{ result.display_name }}
+      </li>
+    </ul>
+  </div>
+</div>

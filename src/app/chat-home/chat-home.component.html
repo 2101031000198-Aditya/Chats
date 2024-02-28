@@ -1,0 +1,54 @@
+<div class="chat-home-container">
+  <!-- My Profile section -->
+
+  <div class="available-persons" *ngIf="Userdata">
+    <div class="my-profile">
+      <img [src]="'data:image/png;base64,'+ Userdata.ProfileImage" alt="My Profile Image">
+      <span>{{Userdata.Name}}</span>
+      
+    </div>
+    <div class="search-container">
+      <input type="text" placeholder="Search..." class="search-input" (input)="filterUsers($event)">
+    </div>
+    <div class="fl">
+      <div *ngFor="let person of allUserdata" class="person-profiles" (click)="selectUser(person.Name, person.Username)">
+        <div *ngIf="calculateDistance(Userdata.Latitude, Userdata.Longitude, person.Latitude, person.Longitude) < 25">
+          <img [src]="'data:image/png;base64,'+ person.ProfileImage" alt="Profile Image">
+        </div>
+      </div>
+    </div>
+    
+    <div *ngFor="let person of allUserdata" class="person-profile" (click)="selectUser(person.Name,person.Username)">
+      <img [src]="'data:image/png;base64,'+ person.ProfileImage" alt="Profile Image">
+      <span>{{ person.Name }}</span>
+    </div>
+  </div>
+
+  <div class="chat-box-container">
+    <div class="chat-box">
+      <div class="chat-header">
+        <img [src]="'data:image/png;base64,' + selectedUserPhotoUrl" alt="Profile Image">
+        <span class="user-name">{{ selectedName }}</span>
+      </div>
+  
+      <div *ngIf="messages[selectedName]">
+        <div *ngFor="let message of messages[selectedName]" class="message"
+          [ngClass]="{'received': message.sender !== myName, 'sent': message.sender === myName}">
+          <div class="message-content">{{ message.content }}</div>
+        </div>
+      </div>
+      <div class="message-input">
+        <input type="text" placeholder="Type your message..." [(ngModel)]="newMessage" [disabled]="!selectedName"
+               (keyup.enter)="sendMessage()">
+        <button (click)="sendMessage()" type="button" [disabled]="!selectedName">Send</button>
+      </div>
+      
+      <!-- <div class="message-input">
+        <input type="text" placeholder="Type your message..." [(ngModel)]="newMessage" [disabled]="!selectedName">
+        <button (click)="sendMessage()" type="button" [disabled]="!selectedName">Send</button>
+      </div> -->
+    </div>
+  </div>
+  
+  
+</div>
