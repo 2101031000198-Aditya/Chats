@@ -30,11 +30,15 @@ export class ChatHomeComponent implements OnInit, OnDestroy {
 
   Userdata: any = {};
   allUserdata: any = [];
+  myName: string;
 
 
   constructor(private sharedService: SharedService, private authService: AuthenticationService) {
     console.log('Username:', this.sharedService.Username);
     this.myName = this.sharedService.Username;
+  }
+  ngOnDestroy(): void {
+    throw new Error('Method not implemented.');
   }
 
   ngOnInit(): void {
@@ -105,7 +109,7 @@ export class ChatHomeComponent implements OnInit, OnDestroy {
 
     const selectedPerson = this.allUserdata.find((person: { Name: string; }) => person.Name === Name);
     const selectedUser = this.allUserdata.find((person: { Username: string; }) => person.Username === Name);
-    this.selectedUsername = Username;
+    this.selectedName = Username;
 
     if (selectedPerson) {
       this.selectedUserPhotoUrl = selectedPerson.ProfileImage;
