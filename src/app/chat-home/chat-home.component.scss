@@ -27,6 +27,7 @@ $message-received-color: #bdbdbd;
 
   /* Person profile */
   .person-profile {
+    width: 90%;
     display: flex;
     align-items: center;
     // justify-content: space-between;
@@ -49,7 +50,7 @@ $message-received-color: #bdbdbd;
     }
 
     &:hover {
-      background-color: #e0e0e0;
+      background-color: #efd4ab;
     }
   }
 }
