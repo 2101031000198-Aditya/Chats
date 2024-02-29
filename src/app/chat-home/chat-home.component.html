@@ -49,7 +49,7 @@
       <div class="message-input">
         <input type="text" placeholder="Type your message..." [(ngModel)]="newMessage" [disabled]="!selectedName"
                (keyup.enter)="sendMessage()">
-        <button (click)="sendMessage()" type="button" [disabled]="!selectedName">Send</button>
+        <button (click)="sendMessage()" type="button" [disabled]="!selectedName"><i class="bi bi-send"></i></button>
       </div>
     
     </div>
