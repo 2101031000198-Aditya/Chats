@@ -33,12 +33,12 @@
   
       <div *ngIf="messages[selectedName]">
         <div *ngFor="let message of messages[selectedName]" class="message"
-          [ngClass]="{'received': message.sender !== myName, 'sent': message.sender === myName}">
+          [ngClass]="{'received': message.sender !== myNam, 'sent': message.sender === myNam}">
           <div class="message-content">{{ message.content }}</div>
         </div>
       </div>
       <div class="message-input">
-        <input type="text" placeholder="Type your message..." [(ngModel)]="newMessage" [disabled]="!selectedName"
+        <input type="text" placeholder="Type your message..." [(ngModel)]="Messagestore" [disabled]="!selectedName"
                (keyup.enter)="sendMessage()">
         <button (click)="sendMessage()" type="button" [disabled]="!selectedName">Send</button>
       </div>

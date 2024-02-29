@@ -54,7 +54,7 @@ export class SigninComponent {
     this.authService.signUp(userData).subscribe(
       (response) => {
         console.log('Sign up successful:', response);
-        localStorage.setItem('currentUser', JSON.stringify(response));
+      
         console.log('Stored coordinates from shared service:', this.sharedService.coordinates);
       },
       (error) => {

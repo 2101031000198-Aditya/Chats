@@ -15,7 +15,13 @@ export interface Messages {
   providedIn: 'root',
 })
 export class AuthenticationService {
+  getLoggedInUsername(): string {
+    throw new Error('Method not implemented.');
+  }
   private apiUrl = 'http://192.168.1.20/api/Users/';
+  private apiUrlMsg = 'http://192.168.1.20/api/Messages/';
+  
+  
 
   constructor(private http: HttpClient, private sharedService: SharedService) { }
 
@@ -35,13 +41,23 @@ export class AuthenticationService {
     return this.http.get<any[]>(this.apiUrl);
   }
 
-  getUserMessages(username: string, messageType: 'receiver' | 'sender'): Observable<Messages[]> {
-    const route = messageType === 'receiver' ? 'receiver' : 'sender';
-    return this.http.get<Messages[]>(`api/Messages/${route}/${username}`);
+  getUserReceiverMessages(username: string): Observable<Messages[]> {
+    const route = 'receiver';
+    return this.http.get<Messages[]>(`${this.apiUrlMsg}/${route}/${username}`);
   }
+  
+  getUserSenderMessages(username: string): Observable<Messages[]> {
+    const route = 'sender';
+    return this.http.get<Messages[]>(`${this.apiUrlMsg}/${route}/${username}`);
+  }
+  
+  
 
-  sendMessage(message: Messages): Observable<any> {
-    return this.http.post('api/Messages', message);
+
+
+  sendMessage(message:Messages): Observable<any> {
+   const Msg=`${this.apiUrlMsg}`
+    return this.http.post(Msg,message);
   }
 
 }
