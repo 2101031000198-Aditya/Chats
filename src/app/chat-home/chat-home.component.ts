@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component,OnInit, OnDestroy } from '@angular/core';
 import { SharedService } from '../shared.service';
 import { AuthenticationService } from '../authentication.service';
+import { Subscription, interval } from 'rxjs';
 
 interface Message {
   sender: string;
@@ -21,7 +22,7 @@ interface Person {
   templateUrl: './chat-home.component.html',
   styleUrls: ['./chat-home.component.scss']
 })
-export class ChatHomeComponent {
+export class ChatHomeComponent implements OnInit, OnDestroy {
   myProfileImageUrl: string = '';
   myLocation: number = 0;
 
@@ -29,7 +30,7 @@ export class ChatHomeComponent {
 
   Userdata: any = {};
   allUserdata: any = [];
-  myName!: string;
+
 
   constructor(private sharedService: SharedService, private authService: AuthenticationService) {
     console.log('Username:', this.sharedService.Username);
@@ -44,25 +45,26 @@ export class ChatHomeComponent {
     }
 
     this.authService.getUsers().subscribe(
-      (result) => {
+      (result: any) => {
         console.warn("users", result);
         this.allUserdata = result;
         this.updateUserLocation();
       },
-      (error) => {
+      (error: any) => {
         console.error("Error fetching users:", error);
       }
     );
 
     this.authService.signIn(this.myName).subscribe(
-      (Signindata) => {
+      (Signindata: any) => {
         console.warn("sign in data", Signindata);
         this.Userdata = Signindata;
       },
-      (error) => {
+      (error: any) => {
         console.error("Error signing in:", error);
       }
     );
+    // this.startMessageInterval();
   }
 
   updateUserLocation(): void {
@@ -110,9 +112,11 @@ export class ChatHomeComponent {
     }
   }
 
+
+
   newMessage: string = '';
   selectedName: string = '';
-  selectedUsername: string = '';
+  // selectedUsername: string = '';
   selectedUserPhotoUrl: string = '';
 
   sendMessage() {

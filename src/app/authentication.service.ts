@@ -4,6 +4,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { SharedService } from './shared.service';
 
+export interface Messages {
+  SenderUsername: string;
+  ReceiverUsername: string;
+  MessageText: string;
+  SentTime: Date;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -26,6 +33,15 @@ export class AuthenticationService {
   
   getUsers(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
+  }
+
+  getUserMessages(username: string, messageType: 'receiver' | 'sender'): Observable<Messages[]> {
+    const route = messageType === 'receiver' ? 'receiver' : 'sender';
+    return this.http.get<Messages[]>(`api/Messages/${route}/${username}`);
+  }
+
+  sendMessage(message: Messages): Observable<any> {
+    return this.http.post('api/Messages', message);
   }
 
 }
