@@ -8,7 +8,7 @@ export interface Messages {
   SenderUsername: string;
   ReceiverUsername: string;
   MessageText: string;
-  SentTime: Date;
+  
 }
 
 @Injectable({
