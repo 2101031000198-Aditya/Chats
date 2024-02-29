@@ -134,13 +134,24 @@ export class ChatHomeComponent {
   filterUsers(event: any) {
     const query = event.target.value.trim().toLowerCase();
     if (!query) {
-      this.filteredPersons = this.allUserdata.slice();
+      this.filteredPersons = this.allUserdata.slice(); // Display all profiles when search query is empty
       return;
     }
   
-    this.filteredPersons = this.allUserdata.filter((person: Person) =>
-      person.Name.toLowerCase().includes(query)
-    );
+    const queryWords = query.split(' ');
+    this.filteredPersons = this.allUserdata.filter((person: Person) => {
+      for (let word of queryWords) {
+        if (!person.Name.toLowerCase().includes(word)) {
+          return false; // If any word doesn't match, exclude this person
+        }
+      }
+      return true; // Include this person if all words match
+    });
   }
+  
+  
+  
+  
+  
   
 }
