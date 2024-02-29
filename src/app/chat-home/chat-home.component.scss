@@ -29,29 +29,30 @@ $message-received-color: #bdbdbd;
   .person-profile {
     display: flex;
     align-items: center;
-    // justify-content: space-between;
     padding: 10px;
     cursor: pointer;
     border-bottom: 2px solid #a3a2a2; 
-    
-    
-
+    transition: transform 0.2s ease-in-out; /* Add a transition for a smooth effect */
+  
     img {
       width: 40px;
       height: 40px;
       border-radius: 50%;
       margin-right: 10px;
     }
-
+  
     span {
       font-size: 16px;
       color: #333;
     }
-
+  
     &:hover {
       background-color: #e0e0e0;
+      transform: scale(1.05); /* Adjust the scale factor as needed */
     }
   }
+  
+  
 }
 .fl{
   display: flex;
