@@ -91,27 +91,27 @@ $message-received-color: #bdbdbd;
     .chat-header {
       display: flex;
       align-items: center;
-      // justify-content: space-between; /* Align items horizontally */
       padding: 10px 20px; 
       background-color: #e0e0e0; 
       border-radius: 8px 8px 0 0; 
       margin-bottom: 10px;
-  
+    
+      position: sticky;
+      top: 0;
+    
       img {
         width: 40px;
         height: 40px;
         border-radius: 50%;
         margin-right: 10px;
       }
-  
+    
       .user-name {
         font-size: 18px;
         font-weight: bold;
         color: #333;
-        
       }
     }
-  
 
   /* Messages */
   .message {
@@ -154,10 +154,11 @@ $message-received-color: #bdbdbd;
 
 /* Message input section */
 .message-input {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  width: calc(100% - 40px);
+  position: fixed;
+  
+  bottom: 5px;
+  left: 420px;
+  width: calc(73% - 40px);
   display: flex;
   align-items: center;
 
@@ -180,6 +181,8 @@ $message-received-color: #bdbdbd;
     cursor: pointer;
   }
 }
+
+
 
 /* Keyframe animation for fade in effect */
 @keyframes fadeIn {
