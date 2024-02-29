@@ -11,6 +11,7 @@
       <input type="text" placeholder="Search..." class="search-input" (input)="filterUsers($event)">
     </div>
     <div class="fl">
+      <!-- <div><p>Near by Friends</p></div> -->
       <div *ngFor="let person of allUserdata" class="person-profiles" (click)="selectUser(person.Name, person.Username)">
         <div *ngIf="calculateDistance(Userdata.Latitude, Userdata.Longitude, person.Latitude, person.Longitude) < 25">
           <img [src]="'data:image/png;base64,'+ person.ProfileImage" alt="Profile Image">
