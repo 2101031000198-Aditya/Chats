@@ -8,7 +8,7 @@ import { MapComponent } from './map/map.component';
 import { PanelService } from './panel.service';
 import { SigninComponent } from './signin/signin.component';
 import { ChatHomeComponent } from './chat-home/chat-home.component';
-import { HubConnection } from '@microsoft/signalr';
+// import { HubConnection } from '@microsoft/signalr';
 import { MatSnackBarModule,MatSnackBarHorizontalPosition,MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FfComponent } from './ff/ff.component';
