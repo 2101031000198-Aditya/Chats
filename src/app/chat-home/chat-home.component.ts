@@ -137,9 +137,10 @@ export class ChatHomeComponent {
       this.filteredPersons = this.allUserdata.slice();
       return;
     }
-
-    this.filteredPersons = this.allUserdata.filter((person: { Name: string; }) =>
+  
+    this.filteredPersons = this.allUserdata.filter((person: Person) =>
       person.Name.toLowerCase().includes(query)
     );
   }
+  
 }
