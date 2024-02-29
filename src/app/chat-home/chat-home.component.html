@@ -17,10 +17,19 @@
         </div>
       </div>
     </div>
-    
-    <div *ngFor="let person of allUserdata" class="person-profile" (click)="selectUser(person.Name,person.Username)">
-      <img [src]="'data:image/png;base64,'+ person.ProfileImage" alt="Profile Image">
-      <span>{{ person.Name }}</span>
+    <div class="f2">
+      <ng-container *ngIf="filteredPersons && filteredPersons.length > 0; else noFilteredPersons">
+        <div *ngFor="let person of filteredPersons" class="person-profile" (click)="selectUser(person.Name,person.Username)">
+          <img [src]="'data:image/png;base64,'+ person.ProfileImage" alt="Profile Image">
+          <span>{{ person.Name }}</span>
+        </div>
+      </ng-container>
+      <ng-template #noFilteredPersons>
+        <div *ngFor="let person of allUserdata" class="person-profile" (click)="selectUser(person.Name,person.Username)">
+          <img [src]="'data:image/png;base64,'+ person.ProfileImage" alt="Profile Image">
+          <span>{{ person.Name }}</span>
+        </div>
+      </ng-template>
     </div>
   </div>
 

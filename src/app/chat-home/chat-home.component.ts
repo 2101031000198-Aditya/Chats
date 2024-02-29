@@ -138,45 +138,24 @@ export class ChatHomeComponent implements OnInit, OnDestroy {
   filterUsers(event: any) {
     const query = event.target.value.trim().toLowerCase();
     if (!query) {
-      this.filteredPersons = this.allUserdata.slice();
+      this.filteredPersons = this.allUserdata.slice(); // Display all profiles when search query is empty
       return;
     }
-
-    this.filteredPersons = this.allUserdata.filter((person: { Name: string; }) =>
-      person.Name.toLowerCase().includes(query)
-    );
-  }
-
-
-  private intervalSubscription!: Subscription;
-
-  ngOnDestroy(): void {
-    // Unsubscribe from the interval when the component is destroyed
-    if (this.intervalSubscription) {
-      this.intervalSubscription.unsubscribe();
-    }
-  }
-
-  startMessageInterval(): void {
-    // Call getMessage() every second
-    this.intervalSubscription = interval(1000).subscribe(() => {
-      this.getMessage();
+  
+    const queryWords = query.split(' ');
+    this.filteredPersons = this.allUserdata.filter((person: Person) => {
+      for (let word of queryWords) {
+        if (!person.Name.toLowerCase().includes(word)) {
+          return false; // If any word doesn't match, exclude this person
+        }
+      }
+      return true; // Include this person if all words match
     });
   }
-
-  getMessage(): void {
-    this.authService.getUserMessages(this.selectedUsername, 'receiver').subscribe(receiverMessages => {
-      console.warn('receiver_mag', this.selectedUsername, ':-', receiverMessages);
-    });
-
-    this.authService.getUserMessages(this.myName, 'sender').subscribe(senderMessages => {
-      console.warn('sender_mag', this.myName, ':-', senderMessages);
-    });
-  }
-  selectedUsername: string = '';
-  myName!: string;
- 
-
-
-
+  
+  
+  
+  
+  
+  
 }
