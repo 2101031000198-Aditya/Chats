@@ -64,7 +64,7 @@ export class ChatHomeComponent implements OnInit, OnDestroy {
         console.error("Error signing in:", error);
       }
     );
-    this.startMessageInterval();
+    // this.startMessageInterval();
   }
 
   updateUserLocation(): void {
@@ -157,28 +157,25 @@ export class ChatHomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  startMessageInterval(): void {
-    // Call getMessage() every second
-    this.intervalSubscription = interval(1000).subscribe(() => {
-      this.getMessage();
-    });
-  }
+  // startMessageInterval(): void {
+  //   // Call getMessage() every second
+  //   this.intervalSubscription = interval(1000).subscribe(() => {
+  //     this.getMessage();
+  //   });
+  // }
 
-  getMessage(): void {
-    this.authService.getUserMessages(this.selectedUsername, 'receiver').subscribe(receiverMessages => {
-      console.warn('receiver_mag', this.selectedUsername, ':-', receiverMessages);
-    });
+  // getMessage(): void {
+  //   this.authService.getUserMessages(this.selectedUsername, 'receiver').subscribe(receiverMessages => {
+  //     console.warn('receiver_mag', this.selectedUsername, ':-', receiverMessages);
+  //   });
 
-    this.authService.getUserMessages(this.myName, 'sender').subscribe(senderMessages => {
-      console.warn('sender_mag', this.myName, ':-', senderMessages);
-    });
-  }
+  //   this.authService.getUserMessages(this.myName, 'sender').subscribe(senderMessages => {
+  //     console.warn('sender_mag', this.myName, ':-', senderMessages);
+  //   });
+  // }
   selectedUsername: string = '';
   myName!: string;
-  SendMessage(){
-   console.warn('hello');
-   
-  }
+ 
 
 
 
