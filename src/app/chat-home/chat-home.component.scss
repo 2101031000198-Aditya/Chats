@@ -27,7 +27,6 @@ $message-received-color: #bdbdbd;
 
   /* Person profile */
   .person-profile {
-    width: 90%;
     display: flex;
     align-items: center;
     padding: 10px;
@@ -48,9 +47,11 @@ $message-received-color: #bdbdbd;
     }
   
     &:hover {
-      background-color: #efd4ab;
+      background-color: #e0e0e0;
+      transform: scale(1.05); /* Adjust the scale factor as needed */
     }
   }
+  
   
   
 }
