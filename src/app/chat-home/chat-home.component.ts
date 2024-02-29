@@ -176,7 +176,8 @@ export class ChatHomeComponent implements OnInit, OnDestroy {
   selectedUsername: string = '';
   myName!: string;
   SendMessage(){
-
+   console.warn('hello');
+   
   }
 
 
