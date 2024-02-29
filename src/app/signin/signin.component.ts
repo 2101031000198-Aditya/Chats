@@ -49,11 +49,13 @@ export class SigninComponent {
       Location: this.sharedService.coordinates.lat + ',' + this.sharedService.coordinates.lon,
       // this.sharedService.Username= this.username 
     };
+    this.sharedService.Username = this.username;
 
     this.authService.signUp(userData).subscribe(
       (response) => {
         console.log('Sign up successful:', response);
         localStorage.setItem('currentUser', JSON.stringify(response));
+        this.router.navigate(['/image-control']);
         console.log('Stored coordinates from shared service:', this.sharedService.coordinates);
       },
       (error) => {

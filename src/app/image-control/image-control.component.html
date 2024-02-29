@@ -1,0 +1,7 @@
+<div [style.width]="imageWidth() + 'px'">
+    <img [src]="imageSource()" [height]="imageHeight()" [width]="imageWidth()" class="mat-elevation-z5" />
+</div>
+<input #inputField type="file" hidden (change)="fileSelected($event)" (click)="inputField.value=''"/>
+<button mat-raised-button (click)="inputField.click()">
+    Select Photo
+</button>

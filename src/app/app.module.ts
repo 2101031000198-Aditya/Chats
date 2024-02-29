@@ -11,6 +11,11 @@ import { ChatHomeComponent } from './chat-home/chat-home.component';
 // import { HubConnection } from '@microsoft/signalr';
 import { MatSnackBarModule,MatSnackBarHorizontalPosition,MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ImageControlComponent } from './image-control/image-control.component';
+import { ImageCropComponent } from './image-crop/image-crop.component';
+import{ImageCropperModule} from 'ngx-image-cropper';
+import{MatButtonModule} from '@angular/material/button';
+import{MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -19,11 +24,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MapComponent,
     SigninComponent,
     ChatHomeComponent,
+    ImageControlComponent,
+    ImageCropComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,FormsModule, ReactiveFormsModule,HttpClientModule, BrowserAnimationsModule,MatSnackBarModule
+    ,ImageCropperModule,MatButtonModule,MatDialogModule
     
   ],
   providers: [PanelService],
