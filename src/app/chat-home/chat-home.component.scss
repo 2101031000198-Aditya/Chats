@@ -48,17 +48,18 @@ $message-received-color: #bdbdbd;
     }
   
     &:hover {
-      background-color: #e0e0e0;
+      background-color: #f2cda7fc;
       transform: scale(1.05); /* Adjust the scale factor as needed */
     }
   }
   
   
+  
 }
 .fl{
   display: flex;
-  border-bottom: 1px solid #bcadad;
-  padding-bottom: 10px;
+  border-bottom: 3px solid #bcadad;
+  padding: 20px;
 }
 
 .person-profiles img {
@@ -66,7 +67,12 @@ $message-received-color: #bdbdbd;
   height: 60px;
   box-shadow: 0px 1px 3px 2px black;
   border-radius: 50%;
-  margin-right: 10px; 
+  margin-right: 15px; 
+  transition: transform 0.2s ease-in-out;
+
+  &:hover{
+    transform: scale(1.1);
+  }
 }
 
 
@@ -91,27 +97,27 @@ $message-received-color: #bdbdbd;
     .chat-header {
       display: flex;
       align-items: center;
-      // justify-content: space-between; /* Align items horizontally */
       padding: 10px 20px; 
       background-color: #e0e0e0; 
       border-radius: 8px 8px 0 0; 
       margin-bottom: 10px;
-  
+    
+      position: sticky;
+      top: 0;
+    
       img {
         width: 40px;
         height: 40px;
         border-radius: 50%;
         margin-right: 10px;
       }
-  
+    
       .user-name {
         font-size: 18px;
         font-weight: bold;
         color: #333;
-        
       }
     }
-  
 
   /* Messages */
   .message {
@@ -154,10 +160,11 @@ $message-received-color: #bdbdbd;
 
 /* Message input section */
 .message-input {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  width: calc(100% - 40px);
+  position: fixed;
+  
+  bottom: 5px;
+  left: 420px;
+  width: calc(73% - 40px);
   display: flex;
   align-items: center;
 
@@ -181,6 +188,8 @@ $message-received-color: #bdbdbd;
   }
 }
 
+
+
 /* Keyframe animation for fade in effect */
 @keyframes fadeIn {
   from {
@@ -199,19 +208,19 @@ $message-received-color: #bdbdbd;
 .my-profile {
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
   border-bottom: 1px solid #ccc; 
 }
 
 .my-profile img {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   margin-right: 10px;
 }
 
 .my-profile span {
-  font-size: 16px;
+  font-size: 20px;
   color: #333;
 }
 
