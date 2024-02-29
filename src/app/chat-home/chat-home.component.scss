@@ -1,10 +1,9 @@
 /* Variables for colors */
 $primary-color: #9c27b0; 
 $secondary-color: #ff9800; 
-$peach-light: #ffdab9; // Light Peach
-$peach-dark: #ff9966;
 
-$background-color:linear-gradient(to right, $peach-light, $peach-dark);
+
+$background-color:lightgrey;
 $chat-background: #fafafa; 
 $message-received-color: #bdbdbd; 
 
@@ -19,12 +18,9 @@ $message-received-color: #bdbdbd;
 /* Available persons section */
 .available-persons {
   width: 27%;
-  background: #FF416C;
-  background: -webkit-linear-gradient(to right, #f59a8a, #f99db2);
-  background: linear-gradient(to right,  #f59a8a, #f99db2);
-  background-repeat: no-repeat;
+  background-color: $background-color;
   background-size: cover;
-  background-position: 0 0;
+  
   padding: 20px;
   box-sizing: border-box;
   overflow-y: auto;
