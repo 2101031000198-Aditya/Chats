@@ -206,7 +206,7 @@ export class ChatHomeComponent implements OnInit, OnDestroy{
   
   
   Messagestore: string = '';
-
+  
   sendMessage() {
     const message: Messages = {
       SenderUsername: this.myName,
