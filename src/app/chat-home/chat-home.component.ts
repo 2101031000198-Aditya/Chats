@@ -166,6 +166,7 @@ export class ChatHomeComponent implements OnInit, OnDestroy{
         (messages) => {
           this.receiverMessages = messages;
           this.combineAndSortMessages();
+          console.log("Received Messages are : ", this.receiverMessages);
         },
         (error) => {
           // Handle error here
