@@ -191,7 +191,6 @@ export class ChatHomeComponent implements OnInit, OnDestroy{
       );
   }
  
-
   combineAndSortMessages() {
     if (this.senderMessages && this.receiverMessages) {
       const allMessages: Message[] = [...this.senderMessages, ...this.receiverMessages];
