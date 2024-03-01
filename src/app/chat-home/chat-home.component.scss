@@ -248,3 +248,70 @@ $message-received-color: #bdbdbd;
   font-size: 16px;
   box-sizing: border-box;
 }
+
+
+
+
+
+// chatboxmsg
+
+.message-wrapper {
+  display: flex;
+  justify-content: flex-start; /* Align messages to the left */
+}
+
+.message {
+  padding: 10px;
+  border-radius: 5px;
+  display: inline-block;
+  max-width: 70%; /* Adjust based on your preference */
+}
+
+.right {
+  justify-content: flex-end; /* Align sent messages to the right */
+}
+
+.left {
+  justify-content: flex-start; /* Align received messages to the left */
+}
+
+.message-time {
+  font-size: 0.8em;
+  color: #000000; /* Color for message timestamp */
+}
+
+
+.chat-box {
+  overflow-y: auto;
+  height: 500px; /* Adjust height as needed */
+}
+
+.message-row {
+  margin-bottom: 10px;
+}
+
+.message {
+  padding: 10px;
+  border-radius: 5px;
+  display: inline-block;
+  max-width: 70%; /* Adjust based on your preference */
+}
+
+.sent {
+  background-color: #46a200; /* Background color for sender's message */
+  float: right;
+}
+
+.received {
+  background-color: #d50000; /* Background color for receiver's message */
+  float: left;
+}
+
+.message-time {
+  font-size: 0.8em;
+  color: #000000; /* Color for message timestamp */
+}
+.message{
+  background-color: #a3a2a2;
+}
+/* You can add more styling as per your requirement */

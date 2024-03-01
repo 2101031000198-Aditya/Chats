@@ -4,6 +4,7 @@ import { AuthenticationService, Messages } from '../authentication.service';
 import { Subscription, interval } from 'rxjs';
 
 interface Message {
+SenderUsername: any;
   SentTime: string | number | Date;
   MessageText: any;
     sender: string;
@@ -33,6 +34,7 @@ export class ChatHomeComponent implements OnInit, OnDestroy{
   Userdata: any = {};
   allUserdata: any = [];
   myName: string;
+ 
   // receiverMessages: Messages[];
 
 
@@ -67,10 +69,10 @@ export class ChatHomeComponent implements OnInit, OnDestroy{
     // this.startMessageInterval();
     
     this.receiverSubscription = interval(4000).subscribe(() => {
-      this.Sendermsg();
+      this.Receivermsg();
    
     });
-  
+    this.Receivermsg();
   }
 
   updateUserLocation(): void {
@@ -161,12 +163,12 @@ export class ChatHomeComponent implements OnInit, OnDestroy{
   }
 
   Receivermsg() {
-    this.authService.getMessagesByReceiver(this.myName,this.selectedUsername)
+    this.authService.getMessagesBySender(this.selectedUsername,this.myName)
       .subscribe(
         (messages) => {
           this.receiverMessages = messages;
           this.combineAndSortMessages();
-          console.log("Received Messages are : ", this.receiverMessages);
+          // console.log('receiver',messages);
         },
         (error) => {
           // Handle error here
@@ -176,13 +178,13 @@ export class ChatHomeComponent implements OnInit, OnDestroy{
   }
 
   Sendermsg() {
-    this.authService.getMessagesByReceiver(this.selectedUsername, this.myName)
+    this.authService.getMessagesBySender(this.myName,this.selectedUsername)
       .subscribe(
         (messages) => {
           // Handle received messages here 
           this.senderMessages = messages;
           this.combineAndSortMessages();
-          // console.log('Receiver',messages);
+          // console.log('sender',messages);
         },
         (error) => {
           // Handle error here
@@ -191,15 +193,17 @@ export class ChatHomeComponent implements OnInit, OnDestroy{
       );
   }
  
-
+  Messagestored: Message[]=[];
   combineAndSortMessages() {
     if (this.senderMessages && this.receiverMessages) {
       const allMessages: Message[] = [...this.senderMessages, ...this.receiverMessages];
       allMessages.sort((a, b) => new Date(a.SentTime).getTime() - new Date(b.SentTime).getTime());
-      console.log('Sorted Messages:', allMessages);
-      // Now you can use allMessages to display messages in ascending order of time
+      this.Messagestored = allMessages;
+      console.log('Sorted Messages:', this.Messagestored);
+      // Now you can use this.messages to display messages in ascending order of time
     }
   }
+  
   
   Messagestore: string = '';
 
