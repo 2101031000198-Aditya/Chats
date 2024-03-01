@@ -72,7 +72,7 @@ export class ChatHomeComponent implements OnInit, OnDestroy{
       this.Receivermsg();
       // this.Sendermsg();
     });
-   
+   this.Sendermsg();
   }
 
   updateUserLocation(): void {
@@ -219,12 +219,17 @@ export class ChatHomeComponent implements OnInit, OnDestroy{
         console.log('Message sent successfully:', response);
         // Clear the input field
         this.Messagestore = '';
+        // Delay retrieval for 500 milliseconds (adjust as needed)
+        setTimeout(() => {
+          this.Sendermsg();
+        }, 100);
       },
       error => {
         console.error('Error sending message:', error);
       }
     );
   }
+  
   
   
   
