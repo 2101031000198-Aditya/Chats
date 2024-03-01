@@ -62,8 +62,8 @@
     </div>
     <div class="message-input">
       <input type="text" placeholder="Type your message..." [(ngModel)]="Messagestore" [disabled]="!selectedName"
-        (keyup.enter)="sendMessage()" (keyup.enter)="Sendermsg()">
-      <button (click)="sendMessage()" (click)="Sendermsg()" type="button" [disabled]="!selectedName"><i
+      (keyup.enter)="Sendermsg()" (keyup.enter)="sendMessage()" >
+      <button (click)="Sendermsg()" (click)="sendMessage()"  type="button" [disabled]="!selectedName"><i
           class="bi bi-send"></i></button>
     </div>
 

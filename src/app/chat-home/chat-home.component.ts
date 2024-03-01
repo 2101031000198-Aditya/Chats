@@ -70,9 +70,9 @@ export class ChatHomeComponent implements OnInit, OnDestroy{
     
     this.receiverSubscription = interval(4000).subscribe(() => {
       this.Receivermsg();
-   
+      // this.Sendermsg();
     });
-    this.Receivermsg();
+   
   }
 
   updateUserLocation(): void {
@@ -216,15 +216,16 @@ export class ChatHomeComponent implements OnInit, OnDestroy{
   
     this.authService.sendMessage(message).subscribe(
       response => {
-      
         console.log('Message sent successfully:', response);
+        // Clear the input field
+        this.Messagestore = '';
       },
       error => {
-       
         console.error('Error sending message:', error);
       }
     );
   }
+  
   
   
 }
