@@ -204,9 +204,9 @@ $message-received-color: #bdbdbd;
 }
 
 /* Apply the fade in animation to the messages */
-.message {
-  animation: fadeIn 0.5s ease;
-}
+// .message {
+//   animation: fadeIn 0.00001s ease;
+// }
 
 .my-profile {
   display: flex;
@@ -286,7 +286,7 @@ $message-received-color: #bdbdbd;
 
 .chat-box {
   overflow-y: auto;
-  height: 623px; /* Adjust height as needed */
+  height: 80vh; /* Adjust height as needed */
 }
 
 .message-row {
