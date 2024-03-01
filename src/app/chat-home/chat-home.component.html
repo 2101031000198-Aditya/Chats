@@ -1,6 +1,6 @@
 <div class="chat-home-container">
   <!-- My Profile section -->
-  <h1>hello</h1>
+
 
   <div class="available-persons" *ngIf="Userdata">
     <div class="my-profile">
@@ -27,7 +27,7 @@
         </div>
       </ng-container>
       <ng-template #noFilteredPersons>
-        <div *ngFor="let person of allUserdata" class="person-profile" (click)="selectUser(person.Name,person.Username)">
+        <div *ngFor="let person of allUserdata" class="person-profile" (click)="selectUser(person.Name,person.Username)"(click)=" Sendermsg()" (click)=" Receivermsg()">
           <img [src]="'data:image/png;base64,'+ person.ProfileImage" alt="Profile Image">
           <span>{{ person.Name }}</span>
         </div>
@@ -49,7 +49,7 @@
         </div>
       </div>
       <div class="message-input">
-        <input type="text" placeholder="Type your message..." [(ngModel)]="newMessage" [disabled]="!selectedName"
+        <input type="text" placeholder="Type your message..." [(ngModel)]="Messagestore" [disabled]="!selectedName"
                (keyup.enter)="sendMessage()">
         <button (click)="sendMessage()" type="button" [disabled]="!selectedName"><i class="bi bi-send"></i></button>
       </div>

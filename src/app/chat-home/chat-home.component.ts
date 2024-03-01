@@ -1,12 +1,13 @@
 import { Component,OnInit, OnDestroy } from '@angular/core';
 import { SharedService } from '../shared.service';
-import { AuthenticationService } from '../authentication.service';
+import { AuthenticationService, Messages } from '../authentication.service';
 import { Subscription, interval } from 'rxjs';
 
 interface Message {
-  sender: string;
-  content: string;
-}
+  MessageText: any;
+    sender: string;
+    content: string;
+  }
 
 interface Person {
   Name: string;
@@ -22,7 +23,7 @@ interface Person {
   templateUrl: './chat-home.component.html',
   styleUrls: ['./chat-home.component.scss']
 })
-export class ChatHomeComponent implements OnInit, OnDestroy {
+export class ChatHomeComponent implements OnInit {
   myProfileImageUrl: string = '';
   myLocation: number = 0;
 
@@ -42,12 +43,7 @@ export class ChatHomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    const storedUser = localStorage.getItem('currentUser');
-    if (storedUser !== null) {
-      this.myName = JSON.parse(storedUser);
-      console.warn(this.myName, 'admin');
-    }
-
+    
     this.authService.getUsers().subscribe(
       (result: any) => {
         console.warn("users", result);
@@ -109,7 +105,10 @@ export class ChatHomeComponent implements OnInit, OnDestroy {
 
     const selectedPerson = this.allUserdata.find((person: { Name: string; }) => person.Name === Name);
     const selectedUser = this.allUserdata.find((person: { Username: string; }) => person.Username === Name);
-    this.selectedName = Username;
+    this.selectedUsername = Username;
+    console.warn('selectedUsername',this.selectedUsername);
+    console.warn(this.myName,'adminname');
+    
 
     if (selectedPerson) {
       this.selectedUserPhotoUrl = selectedPerson.ProfileImage;
@@ -120,22 +119,21 @@ export class ChatHomeComponent implements OnInit, OnDestroy {
 
   newMessage: string = '';
   selectedName: string = '';
-  // selectedUsername: string = '';
+  selectedUsername: string = '';
   selectedUserPhotoUrl: string = '';
-
-  sendMessage() {
-    if (this.newMessage.trim() !== '' && this.selectedName !== '') {
-      const message: Message = {
-        sender: this.myName,
-        content: this.newMessage
-      };
-      if (!this.messages[this.selectedName]) {
-        this.messages[this.selectedName] = [];
-      }
-      this.messages[this.selectedName].push(message);
-      this.newMessage = '';
-    }
-  }
+  // sendMessage() {
+  //   if (this.newMessage.trim() !== '' && this.selectedName !== '') {
+  //     const message: Message = {
+  //       sender: this.myNamee,
+  //       content: this.newMessage
+  //     };
+  //     if (!this.messages[this.selectedName]) {
+  //       this.messages[this.selectedName] = [];
+  //     }
+  //     this.messages[this.selectedName].push(message);
+  //     this.newMessage = '';
+  //   }
+  // }
 
   filteredPersons: Person[] = this.allUserdata.slice();
 
@@ -158,8 +156,53 @@ export class ChatHomeComponent implements OnInit, OnDestroy {
   }
   
   
+  Sendermsg() {
+    this.authService.getMessagesByReceiver(this.selectedUsername, this.myName)
+      .subscribe(
+        (messages) => {
+          // Handle received messages here
+          console.log('Receiver',messages);
+        },
+        (error) => {
+          // Handle error here
+          console.error('Error occurred:', error);
+        }
+      );
+  }
+  Receivermsg() {
+    this.authService.getMessagesByReceiver(this.myName,this.selectedUsername)
+      .subscribe(
+        (messages) => {
+          // Handle received messages here
+          console.log('sender',messages);
+        },
+        (error) => {
+          // Handle error here
+          console.error('Error occurred:', error);
+        }
+      );
+  }
   
+  Messagestore: string = '';
+
+  sendMessage() {
+    const message: Messages = {
+      SenderUsername: this.myName,
+      ReceiverUsername: this.selectedUsername,
+      MessageText: this.Messagestore
+    };
   
+    this.authService.sendMessage(message).subscribe(
+      response => {
+      
+        console.log('Message sent successfully:', response);
+      },
+      error => {
+       
+        console.error('Error sending message:', error);
+      }
+    );
+  }
   
   
 }
