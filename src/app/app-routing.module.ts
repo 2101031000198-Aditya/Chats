@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'chat-home', component: ChatHomeComponent, canActivate: [AuthGuard] },
   { path: 'image-control', component:ImageControlComponent },
-  { path:'image-control', component:ImageCropComponent},
+  { path:'image-crop', component:ImageCropComponent},
   { path: '**', redirectTo: '/signin' }
 ];
 

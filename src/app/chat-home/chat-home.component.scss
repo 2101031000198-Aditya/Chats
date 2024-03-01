@@ -60,6 +60,9 @@ $message-received-color: #bdbdbd;
   display: flex;
   border-bottom: 3px solid #bcadad;
   padding: 20px;
+  flex-wrap: wrap;
+  
+  row-gap: 10px;
 }
 
 .person-profiles img {
@@ -90,6 +93,8 @@ $message-received-color: #bdbdbd;
     flex-grow: 1;
     background-image: url('https://t3.ftcdn.net/jpg/03/27/51/56/360_F_327515607_Hcps04aaEc7Ki43d1XZPxwcv0ZaIaorh.jpg');
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    // display: flex;
+    // flex-direction: column-reverse;
     // padding: 20px;
     box-sizing: border-box;
     overflow-y: auto;
@@ -122,49 +127,72 @@ $message-received-color: #bdbdbd;
       }
     }
 
-  /* Messages */
-  .message {
-    margin-bottom: 15px;
-    padding: 10px;
-    border-radius: 8px;
-    max-width: 25%;
-    word-wrap: break-word;
-    transition: background-color 0.3s ease;
+/* Messages */
+.message {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 100%; /* Ensure messages take up full width */
+  word-wrap: break-word;
+  transition: background-color 0.3s ease;
+  animation: fadeIn 0.5s ease;
+  /* Received messages */
+  &.received {
+    background-color: $message-received-color;
+    align-self: flex-start;
+    margin-right: auto;
 
-    /* Received messages */
-    &.received {
-      background-color: $message-received-color;
-      align-self: flex-start;
-      margin-right: auto;
-
-      &:hover {
-        background-color: darken($message-received-color, 10%);
-      }
+    &:hover {
+      background-color: darken($message-received-color, 10%);
     }
+  }
 
-    /* Sent messages */
-    &.sent {
-      background-color: $secondary-color;
-      color: #fff;
-      align-self: flex-end;
-      margin-left: auto;
+  /* Sent messages */
+  &.sent {
+    background-color: $secondary-color;
+    color: #fff;
+    align-self: flex-end;
+    margin-left: auto;
 
-      &:hover {
-        background-color: darken($secondary-color, 10%);
-      }
+    &:hover {
+      background-color: darken($secondary-color, 10%);
     }
+  }
 
-    /* Message content */
-    .message-content {
-      font-size: 16px;
-    }
+  /* Message content */
+  .message-content {
+    font-size: 16px;
+  }
+}
+
+/* Chat header */
+.chat-header {
+  position: sticky;
+  top: 0;
+  z-index: 1; /* Ensure chat header stays above messages */
+  background-color: #e0e0e0;
+  border-radius: 8px 8px 0 0;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  .user-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
   }
 }
 
 /* Message input section */
 .message-input {
   position: fixed;
-  
   bottom: 5px;
   left: 420px;
   width: calc(73% - 40px);
@@ -193,6 +221,7 @@ $message-received-color: #bdbdbd;
 
 
 
+
 /* Keyframe animation for fade in effect */
 @keyframes fadeIn {
   from {
@@ -204,7 +233,9 @@ $message-received-color: #bdbdbd;
 }
 
 /* Apply the fade in animation to the messages */
-
+// .message {
+//   animation: fadeIn 0.00001s ease;
+// }
 
 .my-profile {
   display: flex;
@@ -282,9 +313,9 @@ $message-received-color: #bdbdbd;
 }
 
 
-.chat-box {
+.chat-box-inner {
   overflow-y: auto;
-  height: 80vh; /* Adjust height as needed */
+  height: 623px; /* Adjust height as needed */
 }
 
 .message-row {
@@ -309,8 +340,9 @@ $message-received-color: #bdbdbd;
 }
 
 .message-time {
-  font-size: 0.8em;
-  color: #000000; /* Color for message timestamp */
+  font-size: 0.6em;
+  color: #292828;
+  align-self: flex-end;
 }
 .message{
   background-color: #a3a2a2;
