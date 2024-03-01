@@ -315,9 +315,7 @@ $message-received-color: #bdbdbd;
 
 .chat-box-inner {
   overflow-y: auto;
-  height: 80vh; /* Adjust height as needed */
-      display: flex;
-    flex-direction: column-reverse;
+  height: 623px; /* Adjust height as needed */
 }
 
 .message-row {
