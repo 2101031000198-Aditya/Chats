@@ -18,7 +18,7 @@
       </div>
     </div>
     
-    <div *ngFor="let person of allUserdata" class="person-profile"  (click)="selectUser(person.Name,person.Username)" (click)=" Sendermsg()" (click)=" Receivermsg()">
+    <div *ngFor="let person of allUserdata" class="person-profile"  (click)="selectUser(person.Name,person.Username)" >
       <img [src]="'data:image/png;base64,'+ person.ProfileImage" alt="Profile Image">
       <span>{{ person.Name }}</span>
     </div>

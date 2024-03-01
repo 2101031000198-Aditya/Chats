@@ -135,32 +135,7 @@ export class ChatHomeComponent implements OnInit{
 
 
 
-  Sendermsg() {
-    this.authService.getMessagesByReceiver(this.selectedUsername, this.myName)
-      .subscribe(
-        (messages) => {
-          // Handle received messages here
-          console.log('Receiver',messages);
-        },
-        (error) => {
-          // Handle error here
-          console.error('Error occurred:', error);
-        }
-      );
-  }
-  Receivermsg() {
-    this.authService.getMessagesByReceiver(this.myName,this.selectedUsername)
-      .subscribe(
-        (messages) => {
-          // Handle received messages here
-          console.log('sender',messages);
-        },
-        (error) => {
-          // Handle error here
-          console.error('Error occurred:', error);
-        }
-      );
-  }
+ 
 
 
 
