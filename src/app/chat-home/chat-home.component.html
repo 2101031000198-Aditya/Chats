@@ -52,7 +52,7 @@
           <div class="message-wrapper"
             [ngClass]="{'right': message.SenderUsername === myName, 'left': message.SenderUsername !== myName}">
             <div class="message">
-              <div class="sender-name">{{ message.SenderUsername }}</div>
+              <!-- <div class="sender-name">{{ message.SenderUsername }}</div> -->
               <div class="message-text">{{ message.MessageText }}</div>
               <div class="message-time">{{ message.SentTime | date: 'mediumTime' }}</div>
             </div>
