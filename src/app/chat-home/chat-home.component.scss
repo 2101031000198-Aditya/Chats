@@ -126,7 +126,7 @@ $message-received-color: #bdbdbd;
         color: #333;
       }
     }
-  } 
+  }
 /* Messages */
 .message {
   margin-bottom: 15px;
@@ -135,7 +135,7 @@ $message-received-color: #bdbdbd;
   max-width: 100%; /* Ensure messages take up full width */
   word-wrap: break-word;
   transition: background-color 0.3s ease;
-  animation: fadeIn 0.5s ease;
+  // animation: fadeIn 0.5s ease;
   /* Received messages */
   &.received {
     background-color: $message-received-color;
