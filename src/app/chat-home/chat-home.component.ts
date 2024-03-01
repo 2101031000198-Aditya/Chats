@@ -67,7 +67,8 @@ export class ChatHomeComponent implements OnInit, OnDestroy{
     // this.startMessageInterval();
     
     this.receiverSubscription = interval(4000).subscribe(() => {
-      this.Receivermsg();
+      // this.Receivermsg();
+      this.Sendermsg();
     });
   
   }
