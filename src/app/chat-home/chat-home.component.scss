@@ -81,6 +81,7 @@ $message-received-color: #bdbdbd;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  
 
 }
 
@@ -89,10 +90,12 @@ $message-received-color: #bdbdbd;
     flex-grow: 1;
     background-image: url('https://t3.ftcdn.net/jpg/03/27/51/56/360_F_327515607_Hcps04aaEc7Ki43d1XZPxwcv0ZaIaorh.jpg');
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    // padding: 20px;
     box-sizing: border-box;
     overflow-y: auto;
     position: relative;
+    height: 100%;
+    
   
     .chat-header {
       display: flex;
@@ -283,7 +286,7 @@ $message-received-color: #bdbdbd;
 
 .chat-box {
   overflow-y: auto;
-  height: 500px; /* Adjust height as needed */
+  height: 623px; /* Adjust height as needed */
 }
 
 .message-row {
@@ -291,7 +294,7 @@ $message-received-color: #bdbdbd;
 }
 
 .message {
-  padding: 10px;
+  padding: 5px;
   border-radius: 5px;
   display: inline-block;
   max-width: 70%; /* Adjust based on your preference */
