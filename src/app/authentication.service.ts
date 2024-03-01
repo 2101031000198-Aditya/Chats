@@ -37,10 +37,10 @@ export class AuthenticationService {
     return this.http.get<any[]>(this.apiUrl);
   }
 
-  getMessagesByReceiver(sendername: string, receivername: string): Observable<Messages[]> {
-    const url = `${this.apiUrlMsg}receiver/${sendername}/${receivername}`;
-    return this.http.get<Messages[]>(url);
-  }
+  // getMessagesByReceiver(sendername: string, receivername: string): Observable<Messages[]> {
+  //   const url = `${this.apiUrlMsg}receiver/${sendername}/${receivername}`;
+  //   return this.http.get<Messages[]>(url);
+  // }
 
   getMessagesBySender(sendername: string, receivername: string): Observable<Messages[]> {
     const url = `${this.apiUrlMsg}sender/${sendername}/${receivername}`;
