@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { SharedService } from './shared.service';
+// import { WebSocketSubject, webSocket } from 'rxjs/webSocket';
 
 export interface Messages {
   SenderUsername: string;
@@ -41,18 +42,18 @@ export class AuthenticationService {
     return this.http.get<any[]>(this.apiUrl);
   }
 
-  getUserReceiverMessages(username: string): Observable<Messages[]> {
-    const route = 'receiver';
-    return this.http.get<Messages[]>(`${this.apiUrlMsg}/${route}/${username}`);
+  getMessagesByReceiver(sendername: string, receivername: string): Observable<Messages[]> {
+    const url = `${this.apiUrlMsg}receiver/${sendername}/${receivername}`;
+    return this.http.get<Messages[]>(url);
   }
-  
-  getUserSenderMessages(username: string): Observable<Messages[]> {
-    const route = 'sender';
-    return this.http.get<Messages[]>(`${this.apiUrlMsg}/${route}/${username}`);
-  }
-  
-  
 
+  getMessagesBySender(sendername: string, receivername: string): Observable<Messages[]> {
+    const url = `${this.apiUrlMsg}sender/${sendername}/${receivername}`;
+    return this.http.get<Messages[]>(url);
+  }
+  
+  
+ 
 
 
   sendMessage(message:Messages): Observable<any> {

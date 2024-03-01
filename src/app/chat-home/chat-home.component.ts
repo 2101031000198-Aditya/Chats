@@ -4,6 +4,7 @@ import { AuthenticationService, Messages } from '../authentication.service';
 import { Subscription, interval } from 'rxjs';
 
 interface Message {
+MessageText: any;
   sender: string;
   content: string;
 }
@@ -22,7 +23,7 @@ interface Person {
   templateUrl: './chat-home.component.html',
   styleUrls: ['./chat-home.component.scss']
 })
-export class ChatHomeComponent implements OnInit, OnDestroy {
+export class ChatHomeComponent implements OnInit{
   myProfileImageUrl: string = '';
   myLocation: number = 0;
 
@@ -31,10 +32,10 @@ export class ChatHomeComponent implements OnInit, OnDestroy {
   Userdata: any = {};
   allUserdata: any = [];
 
-  myNam!: string;
+  myName!: string;
   constructor(private sharedService: SharedService, private authService: AuthenticationService) {
     console.log('Username:', this.sharedService.Username);
-    this.myNam = this.sharedService.Username;
+    this.myName = this.sharedService.Username;
   }
 
   ngOnInit(): void {
@@ -51,7 +52,7 @@ export class ChatHomeComponent implements OnInit, OnDestroy {
       }
     );
 
-    this.authService.signIn(this.myNam).subscribe(
+    this.authService.signIn(this.myName).subscribe(
       (Signindata: any) => {
         console.warn("sign in data", Signindata);
         this.Userdata = Signindata;
@@ -60,10 +61,7 @@ export class ChatHomeComponent implements OnInit, OnDestroy {
         console.error("Error signing in:", error);
       }
     );
-    this.startMessageInterval();
-    // this.getReceiverMessages();
-    this.getSenderMessages();
-
+   
 
   }
 
@@ -116,7 +114,7 @@ export class ChatHomeComponent implements OnInit, OnDestroy {
 
   newMessage: string = '';
   selectedName: string = '';
-  // selectedUsername: string = '';
+  selectedUsername: string = '';
   selectedUserPhotoUrl: string = '';
 
 
@@ -136,42 +134,35 @@ export class ChatHomeComponent implements OnInit, OnDestroy {
   }
 
 
-  private intervalSubscription!: Subscription;
 
-  ngOnDestroy(): void {
-    // Unsubscribe from the interval when the component is destroyed
-    if (this.intervalSubscription) {
-      this.intervalSubscription.unsubscribe();
-    }
+  Sendermsg() {
+    this.authService.getMessagesByReceiver(this.selectedUsername, this.myName)
+      .subscribe(
+        (messages) => {
+          // Handle received messages here
+          console.log('Receiver',messages);
+        },
+        (error) => {
+          // Handle error here
+          console.error('Error occurred:', error);
+        }
+      );
+  }
+  Receivermsg() {
+    this.authService.getMessagesByReceiver(this.myName,this.selectedUsername)
+      .subscribe(
+        (messages) => {
+          // Handle received messages here
+          console.log('sender',messages);
+        },
+        (error) => {
+          // Handle error here
+          console.error('Error occurred:', error);
+        }
+      );
   }
 
-  startMessageInterval(): void {
-    // Call getMessage() every second
-    this.intervalSubscription = interval(4000).subscribe(() => {
-      this.getReceiverMessages();
-    
 
-    });
-  }
-
-  getReceiverMessages(): void {
-    this.authService.getUserReceiverMessages(this.selectedUsername).subscribe(receiverMessages => {
-      console.warn('receiver_messages', receiverMessages);
-      // Handle receiver messages here
-    });
-  }
-  
-  getSenderMessages(): void {
-    this.authService.getUserSenderMessages(this.myNam).subscribe(senderMessages => {
-      console.warn('sender_messages', senderMessages);
-      // Handle sender messages here
-    });
-  }
-  
-  selectedUsername: string = '';
-
-
-  // Messagestore!:string;
 
  
  
@@ -179,18 +170,18 @@ export class ChatHomeComponent implements OnInit, OnDestroy {
 
   sendMessage() {
     const message: Messages = {
-      SenderUsername: this.myNam,
+      SenderUsername: this.myName,
       ReceiverUsername: this.selectedUsername,
       MessageText: this.Messagestore
     };
   
     this.authService.sendMessage(message).subscribe(
       response => {
-        // Handle successful response if needed
+      
         console.log('Message sent successfully:', response);
       },
       error => {
-        // Handle error if needed
+       
         console.error('Error sending message:', error);
       }
     );

@@ -18,7 +18,7 @@
       </div>
     </div>
     
-    <div *ngFor="let person of allUserdata" class="person-profile" (click)="selectUser(person.Name,person.Username)">
+    <div *ngFor="let person of allUserdata" class="person-profile"  (click)="selectUser(person.Name,person.Username)" (click)=" Sendermsg()" (click)=" Receivermsg()">
       <img [src]="'data:image/png;base64,'+ person.ProfileImage" alt="Profile Image">
       <span>{{ person.Name }}</span>
     </div>
@@ -33,14 +33,26 @@
   
       <div *ngIf="messages[selectedName]">
         <div *ngFor="let message of messages[selectedName]" class="message"
-          [ngClass]="{'received': message.sender !== myNam, 'sent': message.sender === myNam}">
+          [ngClass]="{'received': message.sender !== myName, 'sent': message.sender === myName}">
           <div class="message-content">{{ message.content }}</div>
         </div>
       </div>
+      <!-- <div *ngIf="ReceiveMsg.length > 0">
+        <div *ngFor="let message of ReceiveMsg" class="message received">
+          <div class="message-content">{{ message.MessageText }}</div>
+        </div>
+      </div>
+      
+      <div *ngIf="SenderMsg.length > 0">
+        <div *ngFor="let message of SenderMsg" class="message sent">
+          <div class="message-content">{{ message.MessageText }}</div>
+        </div>
+      </div> -->
+      
       <div class="message-input">
-        <input type="text" placeholder="Type your message..." [(ngModel)]="Messagestore" [disabled]="!selectedName"
-               (keyup.enter)="sendMessage()">
-        <button (click)="sendMessage()" type="button" [disabled]="!selectedName">Send</button>
+        <input type="text" placeholder="Type your message..." (keyup.enter)="sendMessage()" [(ngModel)]="Messagestore" [disabled]="!selectedName"
+               >
+        <button  type="button" (click)="sendMessage()"  [disabled]="!selectedName">Send</button>
       </div>
     
     </div>
