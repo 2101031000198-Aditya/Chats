@@ -47,7 +47,7 @@
 
 
 
-      <div class="chat-box-inner">
+      <div class="chat-box-inner" #scrollContainer>
         <div class="message-row" *ngFor="let message of Messagestored">
           <div class="message-wrapper"
             [ngClass]="{'right': message.SenderUsername === myName, 'left': message.SenderUsername !== myName}">

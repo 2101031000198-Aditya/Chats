@@ -1,4 +1,4 @@
-import { Component,OnInit, OnDestroy } from '@angular/core';
+import { Component,OnInit, OnDestroy, AfterViewChecked ,ViewChild, ElementRef} from '@angular/core';
 import { SharedService } from '../shared.service';
 import { AuthenticationService, Messages } from '../authentication.service';
 import { Subscription, interval } from 'rxjs';
@@ -25,9 +25,12 @@ interface Person {
   templateUrl: './chat-home.component.html',
   styleUrls: ['./chat-home.component.scss']
 })
-export class ChatHomeComponent implements OnInit, OnDestroy{ 
+export class ChatHomeComponent implements OnInit, OnDestroy,AfterViewChecked { 
   myProfileImageUrl: string = '';
   myLocation: number = 0;
+
+  @ViewChild('scrollContainer') private scrollContainer!: ElementRef;
+
 
   messages: { [key: string]: Message[] } = {};
 
@@ -42,7 +45,16 @@ export class ChatHomeComponent implements OnInit, OnDestroy{
     console.log('Username:', this.sharedService.Username);
     this.myName = this.sharedService.Username;
   }
-
+  ngAfterViewChecked(): void {
+    this.scrollToBottom();
+  }
+  scrollToBottom(): void {
+    try {
+      this.scrollContainer.nativeElement.scrollTop = this.scrollContainer.nativeElement.scrollHeight;
+    } catch (err) {
+      console.error('Error scrolling to bottom:', err);
+    }
+  }
 
   ngOnInit(): void {
     
