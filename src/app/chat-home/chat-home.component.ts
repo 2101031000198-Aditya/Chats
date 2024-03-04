@@ -113,7 +113,7 @@ export class ChatHomeComponent implements OnInit, OnDestroy,AfterViewChecked {
       user.Longitude = lon;
 
       const distance = this.calculateDistance(this.Userdata.Latitude, this.Userdata.Longitude, user.Latitude, user.Longitude);
-      // console.log(`Distance between ${this.Userdata.Name} and ${user.Name}: ${distance} km`);
+      console.log(`Distance between ${this.Userdata.Name} and ${user.Name}: ${distance} km`);
     });
   }
 
@@ -248,7 +248,7 @@ export class ChatHomeComponent implements OnInit, OnDestroy,AfterViewChecked {
   
     this.authService.sendMessage(message).subscribe(
       response => {
-        // console.log('Message sent successfully:', response);
+        console.log('Message sent successfully:', response);
         // Clear the input field
         this.Messagestore = '';
         // Delay retrieval for 500 milliseconds (adjust as needed)

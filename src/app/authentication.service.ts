@@ -8,7 +8,6 @@ export interface Messages {
   SenderUsername: string;
   ReceiverUsername: string;
   MessageText: string;
-  
 }
 
 @Injectable({
@@ -16,7 +15,11 @@ export interface Messages {
 })
 export class AuthenticationService {
   private apiUrl = 'http://192.168.1.20/api/Users/';
+  
+
   private apiUrlMsg = 'http://192.168.1.20/api/Messages/';
+ 
+
 
 
   constructor(private http: HttpClient, private sharedService: SharedService) { }
