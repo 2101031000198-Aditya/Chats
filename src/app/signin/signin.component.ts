@@ -56,7 +56,7 @@ export class SigninComponent {
         console.log('Sign up successful:', response);
        
         this.router.navigate(['/image-control']);
-        console.log('Stored coordinates from shared service:', this.sharedService.coordinates);
+        // console.log('Stored coordinates from shared service:', this.sharedService.coordinates);
       },
       (error) => {
         console.error('Error signing up:', error);
