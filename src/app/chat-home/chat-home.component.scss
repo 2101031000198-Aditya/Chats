@@ -33,7 +33,7 @@ $message-received-color: #bdbdbd;
     padding: 10px;
     cursor: pointer;
     border-bottom: 2px solid #a3a2a2; 
-    transition: transform 0.2s ease-in-out; /* Add a transition for a smooth effect */
+    transition: transform 0.2s ease-in-out; 
   
     img {
       width: 40px;
@@ -49,7 +49,7 @@ $message-received-color: #bdbdbd;
   
     &:hover {
       background-color: #f2cda7fc;
-      transform: scale(1.05); /* Adjust the scale factor as needed */
+      transform: scale(1.05); 
     }
   }
   
@@ -132,7 +132,7 @@ $message-received-color: #bdbdbd;
   margin-bottom: 15px;
   padding: 10px;
   border-radius: 8px;
-  max-width: 100%; /* Ensure messages take up full width */
+  max-width: 100%;
   word-wrap: break-word;
   transition: background-color 0.3s ease;
   // animation: fadeIn 0.5s ease;
@@ -169,7 +169,7 @@ $message-received-color: #bdbdbd;
 .chat-header {
   position: sticky;
   top: 0;
-  z-index: 1; /* Ensure chat header stays above messages */
+  z-index: 1; 
   background-color: #e0e0e0;
   border-radius: 8px 8px 0 0;
   padding: 10px 20px;
@@ -219,9 +219,6 @@ $message-received-color: #bdbdbd;
   }
 }
 
-
-
-
 /* Keyframe animation for fade in effect */
 @keyframes fadeIn {
   from {
@@ -263,7 +260,7 @@ $message-received-color: #bdbdbd;
 //   padding: 20px;
 //   box-sizing: border-box;
 //   overflow-y: auto;
-//   border-bottom: 1px solid #ccc; /* Add a border at the bottom of available persons */
+//   border-bottom: 1px solid #ccc; 
 // }
 // Search bar css
 .search-container {
@@ -280,13 +277,7 @@ $message-received-color: #bdbdbd;
   font-size: 16px;
   box-sizing: border-box;
 }
-
-
-
-
-
 // chatboxmsg
-
 .message-wrapper {
   display: flex;
   justify-content: flex-start; /* Align messages to the left */
@@ -296,27 +287,27 @@ $message-received-color: #bdbdbd;
   padding: 10px;
   border-radius: 5px;
   display: inline-block;
-  max-width: 70%; /* Adjust based on your preference */
+  max-width: 70%; 
 }
 
 .right {
-  justify-content: flex-end; /* Align sent messages to the right */
+  justify-content: flex-end;
 }
 
 .left {
-  justify-content: flex-start; /* Align received messages to the left */
+  justify-content: flex-start;
 }
 
 .message-time {
   font-size: 0.8em;
-  color: #000000; /* Color for message timestamp */
+  color: #000000;
 }
 
 
 .chat-box-inner {
   overflow-y: auto;
   flex-grow: 1;
-  height: 80vh; /* Adjust height as needed */
+  height: 80vh; 
   display: flex;
   flex-direction: column;
 }
@@ -329,16 +320,16 @@ $message-received-color: #bdbdbd;
   padding: 5px;
   border-radius: 5px;
   display: inline-block;
-  max-width: 70%; /* Adjust based on your preference */
+  max-width: 70%; 
 }
 
 .sent {
-  background-color: #46a200; /* Background color for sender's message */
+  background-color: #46a200; 
   float: right;
 }
 
 .received {
-  background-color: #d50000; /* Background color for receiver's message */
+  background-color: #d50000;
   float: left;
 }
 
