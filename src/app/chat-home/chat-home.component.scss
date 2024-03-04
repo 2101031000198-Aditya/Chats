@@ -25,6 +25,9 @@ $message-received-color: #bdbdbd;
   padding: 20px;
   box-sizing: border-box;
   overflow-y: auto;
+  @media (max-width: 768px) {
+    width: 100%; 
+  }
 
   /* Person profile */
   .person-profile {
@@ -85,7 +88,9 @@ $message-received-color: #bdbdbd;
   display: flex;
   flex-direction: column;
   
-
+  @media (max-width: 768px) {
+    width: 100%; 
+  }
 }
 
 /* Chat box section */

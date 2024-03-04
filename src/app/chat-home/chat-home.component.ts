@@ -1,4 +1,4 @@
-import { Component,OnInit, OnDestroy, AfterViewChecked ,ViewChild, ElementRef} from '@angular/core';
+import { Component,OnInit, OnDestroy, AfterViewChecked ,ViewChild, ElementRef,HostListener} from '@angular/core';
 import { SharedService } from '../shared.service';
 import { AuthenticationService, Messages } from '../authentication.service';
 import { Subscription, interval } from 'rxjs';
@@ -26,6 +26,8 @@ interface Person {
   styleUrls: ['./chat-home.component.scss']
 })
 export class ChatHomeComponent implements OnInit, OnDestroy,AfterViewChecked { 
+  showAvailablePersons = true; 
+  showChatBox = true;
   myProfileImageUrl: string = '';
   myLocation: number = 0;
 
@@ -39,6 +41,19 @@ export class ChatHomeComponent implements OnInit, OnDestroy,AfterViewChecked {
   myName: string;
  
   // receiverMessages: Messages[];
+  checkScreenSize() {
+    const screenWidth = window.innerWidth;
+    this.showAvailablePersons = screenWidth > 768;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenSize();
+  }
+  goBack() {
+    this.showAvailablePersons = true;
+    this.showChatBox = false;
+  }
 
 
   constructor(private sharedService: SharedService, private authService: AuthenticationService) {
@@ -128,6 +143,11 @@ export class ChatHomeComponent implements OnInit, OnDestroy,AfterViewChecked {
     this.selectedUsername = Username;
     // console.warn('selectedUsername',this.selectedUsername);
     // console.warn(this.myName,'adminname');
+    if (window.innerWidth <= 768) {
+      this.showAvailablePersons = false;
+    }
+    else{this.showAvailablePersons = true;}
+    this.showChatBox = true;
     
 
     if (selectedPerson) {
@@ -148,7 +168,7 @@ export class ChatHomeComponent implements OnInit, OnDestroy,AfterViewChecked {
   filterUsers(event: any) {
     const query = event.target.value.trim().toLowerCase();
     if (!query) {
-      this.filteredPersons = this.allUserdata.slice(); // Display all profiles when search query is empty
+      this.filteredPersons = this.allUserdata.slice(); 
       return;
     }
   
@@ -156,10 +176,10 @@ export class ChatHomeComponent implements OnInit, OnDestroy,AfterViewChecked {
     this.filteredPersons = this.allUserdata.filter((person: Person) => {
       for (let word of queryWords) {
         if (!person.Name.toLowerCase().includes(word)) {
-          return false; // If any word doesn't match, exclude this person
+          return false; 
         }
       }
-      return true; // Include this person if all words match
+      return true; 
     });
   }
   

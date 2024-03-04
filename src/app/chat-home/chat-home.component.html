@@ -2,7 +2,7 @@
   <!-- My Profile section -->
 
 
-  <div class="available-persons" *ngIf="Userdata">
+  <div class="available-persons" *ngIf="showAvailablePersons" >
     <div class="my-profile">
       <img [src]="'data:image/png;base64,'+ Userdata.ProfileImage" alt="My Profile Image">
       <span>{{Userdata.Name}}</span>
@@ -37,16 +37,12 @@
       </ng-template>
     </div>
   </div>
-
-  <div class="chat-box-container">
+  <div class="chat-box-container" *ngIf="showChatBox">
     <div class="chat-box">
       <div class="chat-header">
         <img [src]="'data:image/png;base64,' + selectedUserPhotoUrl" alt="Profile Image">
         <span class="user-name">{{ selectedName }}</span>
       </div>
-
-
-
       <div class="chat-box-inner" #scrollContainer>
         <div class="message-row" *ngFor="let message of Messagestored">
           <div class="message-wrapper"
@@ -66,7 +62,7 @@
       <button (click)="sendMessage()"  type="button" [disabled]="!selectedName"><i
           class="bi bi-send"></i></button>
     </div>
-
+    <button class="back-button" (click)="goBack()">Back</button>
   </div>
 </div>
 
