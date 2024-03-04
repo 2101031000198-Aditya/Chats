@@ -42,7 +42,7 @@ export class ChatHomeComponent implements OnInit, OnDestroy,AfterViewChecked {
 
 
   constructor(private sharedService: SharedService, private authService: AuthenticationService) {
-    console.log('Username:', this.sharedService.Username);
+    // console.log('Username:', this.sharedService.Username);
     this.myName = this.sharedService.Username;
   }
   ngAfterViewChecked(): void {
@@ -98,7 +98,7 @@ export class ChatHomeComponent implements OnInit, OnDestroy,AfterViewChecked {
       user.Longitude = lon;
 
       const distance = this.calculateDistance(this.Userdata.Latitude, this.Userdata.Longitude, user.Latitude, user.Longitude);
-      console.log(`Distance between ${this.Userdata.Name} and ${user.Name}: ${distance} km`);
+      // console.log(`Distance between ${this.Userdata.Name} and ${user.Name}: ${distance} km`);
     });
   }
 
@@ -211,7 +211,7 @@ export class ChatHomeComponent implements OnInit, OnDestroy,AfterViewChecked {
       const allMessages: Message[] = [...this.senderMessages, ...this.receiverMessages];
       allMessages.sort((a, b) => new Date(a.SentTime).getTime() - new Date(b.SentTime).getTime());
       this.Messagestored = allMessages;
-      console.log('Sorted Messages:', this.Messagestored);
+      // console.log('Sorted Messages:', this.Messagestored);
       // Now you can use this.messages to display messages in ascending order of time
     }
   }
@@ -228,7 +228,7 @@ export class ChatHomeComponent implements OnInit, OnDestroy,AfterViewChecked {
   
     this.authService.sendMessage(message).subscribe(
       response => {
-        console.log('Message sent successfully:', response);
+        // console.log('Message sent successfully:', response);
         // Clear the input field
         this.Messagestore = '';
         // Delay retrieval for 500 milliseconds (adjust as needed)
@@ -246,3 +246,11 @@ export class ChatHomeComponent implements OnInit, OnDestroy,AfterViewChecked {
   
   
 }
+      
+
+
+
+
+
+
+

@@ -13,7 +13,7 @@ $message-received-color: #bdbdbd;
 .chat-home-container {
   display: flex;
   height: 100vh;
-  // background-color:black;
+ 
 }
 
 /* Available persons section */
@@ -93,8 +93,6 @@ $message-received-color: #bdbdbd;
     flex-grow: 1;
     background-image: url('https://t3.ftcdn.net/jpg/03/27/51/56/360_F_327515607_Hcps04aaEc7Ki43d1XZPxwcv0ZaIaorh.jpg');
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    // display: flex;
-    // flex-direction: column-reverse;
     // padding: 20px;
     box-sizing: border-box;
     overflow-y: auto;
@@ -253,16 +251,6 @@ $message-received-color: #bdbdbd;
   color: #333;
 }
 
-/* Available persons section */
-// .available-persons {
-//   width: 30%;
-//   background-color: $background-color;
-//   padding: 20px;
-//   box-sizing: border-box;
-//   overflow-y: auto;
-//   border-bottom: 1px solid #ccc; 
-// }
-// Search bar css
 .search-container {
   margin-top: 20px;
   text-align: center;
@@ -277,10 +265,12 @@ $message-received-color: #bdbdbd;
   font-size: 16px;
   box-sizing: border-box;
 }
-// chatboxmsg
+
+
+
 .message-wrapper {
   display: flex;
-  justify-content: flex-start; /* Align messages to the left */
+  justify-content: flex-start; 
 }
 
 .message {
@@ -291,23 +281,23 @@ $message-received-color: #bdbdbd;
 }
 
 .right {
-  justify-content: flex-end;
+  justify-content: flex-end; 
 }
 
 .left {
-  justify-content: flex-start;
+  justify-content: flex-start; 
 }
 
 .message-time {
   font-size: 0.8em;
-  color: #000000;
+  color: #000000; 
 }
 
 
 .chat-box-inner {
   overflow-y: auto;
   flex-grow: 1;
-  height: 80vh; 
+  height: 80vh;
   display: flex;
   flex-direction: column;
 }
@@ -320,7 +310,7 @@ $message-received-color: #bdbdbd;
   padding: 5px;
   border-radius: 5px;
   display: inline-block;
-  max-width: 70%; 
+  max-width: 70%;
 }
 
 .sent {
@@ -329,7 +319,7 @@ $message-received-color: #bdbdbd;
 }
 
 .received {
-  background-color: #d50000;
+  background-color: #d50000; 
   float: left;
 }
 

@@ -1,4 +1,4 @@
-<div [style.width]="imageWidth()" class="g">
+<div [style.width]="imageWidth() +'px'" >
     <img [src]="imageSource()" [height]="imageHeight()" [width]="imageWidth()" class="mat-elevation-z5" />
 </div>
 <input #inputField type="file" hidden (change)="fileSelected($event)" (click)="inputField.value=''" />
