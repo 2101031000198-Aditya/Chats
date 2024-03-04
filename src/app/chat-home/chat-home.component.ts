@@ -1,15 +1,15 @@
-import { Component,OnInit, OnDestroy, AfterViewChecked ,ViewChild, ElementRef,HostListener} from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewChecked, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { SharedService } from '../shared.service';
 import { AuthenticationService, Messages } from '../authentication.service';
 import { Subscription, interval } from 'rxjs';
 
 interface Message {
-SenderUsername: any;
+  SenderUsername: any;
   SentTime: string | number | Date;
   MessageText: any;
-    sender: string;
-    content: string;
-  }
+  sender: string;
+  content: string;
+}
 
 interface Person {
   Name: string;
@@ -25,8 +25,8 @@ interface Person {
   templateUrl: './chat-home.component.html',
   styleUrls: ['./chat-home.component.scss']
 })
-export class ChatHomeComponent implements OnInit, OnDestroy,AfterViewChecked { 
-  showAvailablePersons = true; 
+export class ChatHomeComponent implements OnInit, OnDestroy, AfterViewChecked {
+  showAvailablePersons = true;
   showChatBox = true;
   myProfileImageUrl: string = '';
   myLocation: number = 0;
@@ -39,7 +39,7 @@ export class ChatHomeComponent implements OnInit, OnDestroy,AfterViewChecked {
   Userdata: any = {};
   allUserdata: any = [];
   myName: string;
- 
+
   // receiverMessages: Messages[];
   checkScreenSize() {
     const screenWidth = window.innerWidth;
@@ -72,7 +72,7 @@ export class ChatHomeComponent implements OnInit, OnDestroy,AfterViewChecked {
   }
 
   ngOnInit(): void {
-    
+
     this.authService.getUsers().subscribe(
       (result: any) => {
         console.warn("users", result);
@@ -94,12 +94,12 @@ export class ChatHomeComponent implements OnInit, OnDestroy,AfterViewChecked {
       }
     );
     // this.startMessageInterval();
-    
+
     this.receiverSubscription = interval(4000).subscribe(() => {
       this.Receivermsg();
       // this.Sendermsg();
     });
-   this.Sendermsg();
+    this.Sendermsg();
   }
 
   updateUserLocation(): void {
@@ -146,9 +146,9 @@ export class ChatHomeComponent implements OnInit, OnDestroy,AfterViewChecked {
     if (window.innerWidth <= 768) {
       this.showAvailablePersons = false;
     }
-    else{this.showAvailablePersons = true;}
+    else { this.showAvailablePersons = true; }
     this.showChatBox = true;
-    
+
 
     if (selectedPerson) {
       this.selectedUserPhotoUrl = selectedPerson.ProfileImage;
@@ -168,23 +168,23 @@ export class ChatHomeComponent implements OnInit, OnDestroy,AfterViewChecked {
   filterUsers(event: any) {
     const query = event.target.value.trim().toLowerCase();
     if (!query) {
-      this.filteredPersons = this.allUserdata.slice(); 
+      this.filteredPersons = this.allUserdata.slice();
       return;
     }
-  
+
     const queryWords = query.split(' ');
     this.filteredPersons = this.allUserdata.filter((person: Person) => {
       for (let word of queryWords) {
         if (!person.Name.toLowerCase().includes(word)) {
-          return false; 
+          return false;
         }
       }
-      return true; 
+      return true;
     });
   }
-  
-  receiverMessages:any;
-  senderMessages:any;
+
+  receiverMessages: any;
+  senderMessages: any;
   private receiverSubscription: Subscription | undefined;
 
   ngOnDestroy(): void {
@@ -195,7 +195,7 @@ export class ChatHomeComponent implements OnInit, OnDestroy,AfterViewChecked {
   }
 
   Receivermsg() {
-    this.authService.getMessagesBySender(this.selectedUsername,this.myName)
+    this.authService.getMessagesBySender(this.selectedUsername, this.myName)
       .subscribe(
         (messages) => {
           this.receiverMessages = messages;
@@ -210,7 +210,7 @@ export class ChatHomeComponent implements OnInit, OnDestroy,AfterViewChecked {
   }
 
   Sendermsg() {
-    this.authService.getMessagesBySender(this.myName,this.selectedUsername)
+    this.authService.getMessagesBySender(this.myName, this.selectedUsername)
       .subscribe(
         (messages) => {
           // Handle received messages here 
@@ -224,8 +224,8 @@ export class ChatHomeComponent implements OnInit, OnDestroy,AfterViewChecked {
         }
       );
   }
- 
-  Messagestored: Message[]=[];
+
+  Messagestored: Message[] = [];
   combineAndSortMessages() {
     if (this.senderMessages && this.receiverMessages) {
       const allMessages: Message[] = [...this.senderMessages, ...this.receiverMessages];
@@ -235,17 +235,17 @@ export class ChatHomeComponent implements OnInit, OnDestroy,AfterViewChecked {
       // Now you can use this.messages to display messages in ascending order of time
     }
   }
-  
-  
+
+
   Messagestore: string = '';
-  
+
   sendMessage() {
     const message: Messages = {
       SenderUsername: this.myName,
       ReceiverUsername: this.selectedUsername,
       MessageText: this.Messagestore
     };
-  
+
     this.authService.sendMessage(message).subscribe(
       response => {
         // console.log('Message sent successfully:', response);
@@ -261,12 +261,12 @@ export class ChatHomeComponent implements OnInit, OnDestroy,AfterViewChecked {
       }
     );
   }
-  
-  
-  
-  
+
+
+
+
 }
-      
+
 
 
 

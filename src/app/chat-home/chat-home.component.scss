@@ -196,11 +196,12 @@ $message-received-color: #bdbdbd;
 /* Message input section */
 .message-input {
   position: fixed;
-  bottom: 5px;
-  left: 420px;
-  width: calc(73% - 40px);
+  bottom: 10px;
+  // left: 420px;
+  width: calc(80% - 40px);
+  
   display: flex;
-  align-items: center;
+  align-items: left;
 
   input[type="text"] {
     flex-grow: 1;
