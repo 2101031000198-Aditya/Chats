@@ -246,3 +246,11 @@ export class ChatHomeComponent implements OnInit, OnDestroy,AfterViewChecked {
   
   
 }
+      
+
+
+
+
+
+
+
